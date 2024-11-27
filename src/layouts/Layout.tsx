@@ -1,5 +1,8 @@
 import { Outlet } from "react-router-dom"
 import { Header } from "../Components/Header"
+import Modal from "../Components/Modal"
+import { useAppStore } from "../store/useAppStore"
+import { useEffect } from "react"
 
 /*
     Outlet => Permite compartir todo lo que este en este archivo en lo que este envolviendo en el Route de Browser 
@@ -9,12 +12,21 @@ import { Header } from "../Components/Header"
 */
 
 export const Layout = () => {
+
+  const { loadFromLocalStorage } = useAppStore()
+
+  useEffect(() => {
+    loadFromLocalStorage()
+  }, [loadFromLocalStorage])
+
   return (
     <>
         <Header />
         <main className="container mx-auto py-16">
             <Outlet />
         </main>
+
+        <Modal />
     </>
   )
 }
