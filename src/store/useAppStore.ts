@@ -1,6 +1,8 @@
 import { create } from "zustand";
+import { devtools } from "zustand/middleware"
 import { createRecipeSlice, RecipesSliceType } from "./recipeSlice";
 import { createFavoriteSlice, FavoritesSliceType } from "./favoritesSlice";
+import { createNotificationSlice, NotificationSliceType } from "./notificationSlice";
 
 /*
     exportamos y definimos el store principal, donde vemos que en el "create" recibimos un "...args" (que en los docs se coloca como "...a")
@@ -13,9 +15,10 @@ import { createFavoriteSlice, FavoritesSliceType } from "./favoritesSlice";
     del tipo "RecipesSliceType" y con ello se soluciona la
     alerta del error
 */
-export const useAppStore = create<RecipesSliceType & FavoritesSliceType>((...args) => ({
+export const useAppStore = create<RecipesSliceType & FavoritesSliceType & NotificationSliceType>()(devtools((...args) => ({
   
     ...createRecipeSlice(...args),
-    ...createFavoriteSlice(...args)
+    ...createFavoriteSlice(...args),
+    ...createNotificationSlice(...args)
 
-}))
+})))

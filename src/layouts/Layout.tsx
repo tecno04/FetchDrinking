@@ -3,6 +3,7 @@ import { Header } from "../Components/Header"
 import Modal from "../Components/Modal"
 import { useAppStore } from "../store/useAppStore"
 import { useEffect } from "react"
+import Notification from "../Components/Notification"
 
 /*
     Outlet => Permite compartir todo lo que este en este archivo en lo que este envolviendo en el Route de Browser 
@@ -27,6 +28,9 @@ export const Layout = () => {
         </main>
 
         <Modal />
+
+        <Notification />
+        
     </>
   )
 }

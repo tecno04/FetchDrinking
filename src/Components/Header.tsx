@@ -11,7 +11,7 @@ export const Header = () => {
         return pathname === '/'
     }, [pathname])
 
-    const { fetchCategories, searchRecipes, categories} = useAppStore()
+    const { fetchCategories, searchRecipes, categories, showNotification} = useAppStore()
 
     useEffect(() => {
         fetchCategories()
@@ -26,7 +26,7 @@ export const Header = () => {
     const [searchFilters, setsearchFilters] = useState(SearchInitialValue)
 
 
-    const [Error, setError] = useState('')
+    const [Error] = useState('')
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>| ChangeEvent<HTMLSelectElement>) => {
 
@@ -44,11 +44,12 @@ export const Header = () => {
         e.preventDefault()
 
         if(Object.values(searchFilters).includes('')){
-            setError('Todos los campos son obligatorios')
+
+            showNotification({'text': 'Todos los campos son obligatorios', 'error': true})
             return
         }
 
-        setError('')
+
         searchRecipes(searchFilters)
 
     }
