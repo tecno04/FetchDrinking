@@ -11,9 +11,11 @@ import { createNotificationSlice, NotificationSliceType } from "./notificationSl
     *get
     *api
 
-    Como la fn de "createRecipeSlice" no recibe argumentos, le decimos al create de zustand que sera 
-    del tipo "RecipesSliceType" y con ello se soluciona la
-    alerta del error
+    Como en el cuerpo del store Principal, estamos teniendo una copia de los stores "hijos" y a estos mismos, le estamos pasando los params
+    antes mencionados (y no los esperan), va a dar error, por ende, lo que hacemos es, en el "create", le decimos que será del tipo
+    "RecipesSliceType", "FavoritesSliceType" y "NotificationSliceType", para comunicarlos entre si y evitar el error
+
+    Ademas envolvemos al store principal con devtools para poder usar las redux toolkit desde navegador para debugging
 */
 export const useAppStore = create<RecipesSliceType & FavoritesSliceType & NotificationSliceType>()(devtools((...args) => ({
   
