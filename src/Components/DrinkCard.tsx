@@ -1,13 +1,18 @@
 import { useAppStore } from "../store/useAppStore"
 import { Drink } from "../types"
 
+/*
+    Definimos el type para el prop recibida para el component donde le decimos que la variable recibida debe ser del tipo "Drink" 
+    Recordemos que "Drink" es el schema donde definimos las props que validara en types
+*/
 type DrinkCardProps = {
     drink : Drink
 }
 
 export const DrinkCard = ({drink}: DrinkCardProps) => {
 
-    const selectRecipe = useAppStore((state) => state.selectRecipe)
+    //desestructuramos la fn para consultar los datos de la bebida seleccionda por ID de zustand
+    const { selectRecipe } = useAppStore() 
 
   return (
 

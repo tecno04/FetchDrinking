@@ -5,28 +5,43 @@ import { selectDrink } from "../types/index";
 
 export default function Modal() {
 
-    const { modal, closeModal, selectedtRecipe, handleClickFavorite, favoriteExist } = useAppStore()
+  //desestructuramos las variables y fn necesarias desde el store Principal de Zustand
+  const { modal, closeModal, selectedtRecipe, handleClickFavorite, favoriteExist } = useAppStore()
 
-    const renderIngredients = () => {
+  //Fn para renderizar los ingredientes y medidas de la bebida seleccionada
+  const renderIngredients = () => {
         
-        const ingredients : JSX.Element[] = []
+    //generamos una variable que sera del tipo array que a su vez es un JSX.Element del tipo array
+    const ingredients : JSX.Element[] = []
 
-        for (let i = 0; i <= 6; i++) {
-            const ingredient = selectedtRecipe[`strIngredient${i}` as keyof selectDrink]
-            const measure = selectedtRecipe[`strMeasure${i}` as keyof selectDrink]
+    //vamos a recorrer un bucle, donde siga hasta que el indice sea menor o igual a 6 (ya que traemos 6 items de ingredientes o medidas)
+    for (let i = 0; i <= 6; i++) {
+        
+      /*
+        en la variable instanciada, usamos el type "selectedRecipe" donde en su indice vamos a colocar de forma estatica tal como
+        viene en la API, pero el numero del mismo vamos a hacerlo de forma dinamica con el indice recorrido del bucle, y, a esto,
+        vamos a decirle que sera de tipo llave como "selectDrink" (lo mismo hacemos con las medidas)
+      */
+      const ingredient = selectedtRecipe[`strIngredient${i}` as keyof selectDrink]
+        
+      const measure = selectedtRecipe[`strMeasure${i}` as keyof selectDrink]
 
-            if(ingredient && measure){
-                ingredients.push(
-                    <li key={i} className='text-lg font-normal'>
-                        {ingredient} - {measure}
-                    </li>
-                )
-            }
-        }
-
-        return ingredients
-
+      //SI, en ambas variables, hay datos (que no devuelvan un null)
+      if(ingredient && measure){
+          
+        //vamos a agregar al array primeramente declarado, un <li></li> donde dentro ponemos el valor de ingredient y measure
+        ingredients.push(
+          <li key={i} className='text-lg font-normal'>
+            {ingredient} - {measure}
+          </li>
+        )
+      }
     }
+
+    //Finalmente, retornamos el array
+    return ingredients
+
+  }
 
   return (
     <>
@@ -68,7 +83,7 @@ export default function Modal() {
 
                   <Dialog.Title as="h3" className="text-gray-900 text-2xl font-extrabold my-5">
                     Ingredientes y Cantidades
-
+                    
                     { renderIngredients() }
 
                   </Dialog.Title>

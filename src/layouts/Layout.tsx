@@ -14,11 +14,15 @@ import Notification from "../Components/Notification"
 
 export const Layout = () => {
 
+  //importamos con desestructuracion , la fn de carga de LS desde zustand
   const { loadFromLocalStorage } = useAppStore()
 
+  //con useEffect, hacemos que al renderizar el component, se instancie dicha funcion
   useEffect(() => {
     loadFromLocalStorage()
   }, [loadFromLocalStorage])
+
+  //Al final instanciamos los componentes de Modal y Notification, mostrar no se mostraran hasta que el usuario interactue con los datos
 
   return (
     <>
