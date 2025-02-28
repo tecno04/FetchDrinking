@@ -1,6 +1,7 @@
 {
   "name": "bebidas-react-ts",
   "private": true,
+  "homepage": "/bebidas_app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
