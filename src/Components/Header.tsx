@@ -64,7 +64,7 @@ export const Header = () => {
                 <div className="flex justify-between items-center">
 
                     <div>
-                        <img className="w-32 py-10" src="/logo.svg" alt="logotipo" />
+                        <img className="w-32 py-10" src="logo.svg" alt="logotipo" />
                     </div>
 
                     <nav className="flex gap-4">
