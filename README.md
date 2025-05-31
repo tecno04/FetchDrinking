@@ -15,6 +15,6 @@
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=tecno04&show_icons=true&locale=en" alt="tecno04" /></p>
 
 
-<h2>FETCH DRINKING &nbsp;&#127928;</h2>
+<h2>FETCH DRINKING &nbsp;&#127865;</h2>
 <hr>
 <p>Practica realizada con React y TS, consumiendo una API con <b>axios</b> donde se puede consultar por bebidas alcoholicas y poder guardarlas como fav (almacenadas en LocalStorage), validando los datos con <b>zod</b> y manejando el estado y acciones con <b>zustand</b></p>
